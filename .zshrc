@@ -62,7 +62,6 @@ ZSH_THEME="bira"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load?
 #Standard plugins can be found in ~ /.oh - my - zsh / plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -76,6 +75,39 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+# Syntax highlighting
+# Override highlighter colors
+ZSH_HIGHLIGHT_STYLES[default]=none
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
+ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
+ZSH_HIGHLIGHT_STYLES[alias]=fg=green
+ZSH_HIGHLIGHT_STYLES[builtin]=fg=green
+ZSH_HIGHLIGHT_STYLES[function]=fg=green
+ZSH_HIGHLIGHT_STYLES[command]=fg=green
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
+ZSH_HIGHLIGHT_STYLES[commandseparator]=253
+ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=253
+ZSH_HIGHLIGHT_STYLES[path]=fg=253,underline
+ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
+ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
+ZSH_HIGHLIGHT_STYLES[assign]=none
+
+#ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
+#ZSH_HIGHLIGHT_STYLES[isearch]=fg=cyan,bg=white
+#ZSH_HIGHLIGHT_STYLES[precommand]=fg=yellow,underline
+#ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+# ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -105,7 +137,6 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-# alias py3f='python3'
 
 # eval $(dircolors -b ~/.dircolors/dircolors.256dark)
 
@@ -118,8 +149,6 @@ fi
 # tmux -2 以256终端运行
 alias tmux='tmux -2'
 
-# source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH=$PATH:$HOME/.yarn/bin
 export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
 
