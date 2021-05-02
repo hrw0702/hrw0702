@@ -87,12 +87,12 @@ ZSH_HIGHLIGHT_STYLES[alias]=fg=green
 ZSH_HIGHLIGHT_STYLES[builtin]=fg=green
 ZSH_HIGHLIGHT_STYLES[function]=fg=green
 ZSH_HIGHLIGHT_STYLES[command]=fg=green
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-ZSH_HIGHLIGHT_STYLES[commandseparator]=253
-ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=253
-ZSH_HIGHLIGHT_STYLES[path]=fg=253,underline
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=250
+ZSH_HIGHLIGHT_STYLES[commandseparator]=250
+ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=250
+ZSH_HIGHLIGHT_STYLES[path]=fg=250
 ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=250,underline
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
 ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none

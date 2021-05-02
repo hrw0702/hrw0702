@@ -86,15 +86,24 @@ set showcmd
 " 光标移动到顶部和底部时保持3行距离
 set scrolloff=10
 
-" 设置256色
-""set termguicolors
-""set t_Co=256
 
-" use 256 colors in terminal
-if !has("gui_running")
-    set t_Co=256
-    set term=screen-256color
+" termguicolors 开启真彩色
+if has("termguicolors")
+  " fix bug for vim
+  " termguicolors 用来开启真彩色，前面两行用来解决 vim 的 BUG (neovim 不需要），
+  " 其中 ^[ 是代表 ESC 键，需要在 vim 中按 Ctrl-v ESC 来输入
+  set t_8f=[38;2;%lu;%lu;%lum
+  set t_8b=[48;2;%lu;%lu;%lum
+
+  " enbale true color
+  set termguicolors
 endif
+
+" 设置256色
+""if !has("gui_running")
+""    set t_Co=256
+""  set term=screen-256color
+""endif
 
 " 配色方案
 colorscheme NeoSolarized
@@ -605,9 +614,9 @@ autocmd BufNewFile,BufRead * :syntax match MyFunctions "\<[a-zA-Z_][a-zA-Z_0-9]*
 hi MyFunctions ctermfg=2             cterm=none
 
 " 高亮当前行号
-hi CursorLineNr cterm=bold ctermfg=255 ctermbg=24 gui=bold guifg=white
-" 设置当前行号背景色
-hi LineNr ctermfg=240 ctermbg=none
+hi CursorLineNr cterm=bold ctermfg=255 ctermbg=24 gui=none guifg=white guibg=#2aa198
+" 设置当前行号颜色
+hi LineNr ctermfg=240 ctermbg=none gui=none guifg=#657b83 guibg=#002B36
 " 设置光标颜色
 hi Cursor ctermfg=15 ctermbg=2 guifg=white guibg=cyan
 
