@@ -375,6 +375,24 @@ nmap <leader>i :IndentLinesToggle<CR>
 " 映射<ESC>键
 inoremap jk <ESC>
 
+" 映射INSERT模式下移动光标
+" Alt+j j
+" Alt+k k
+" Alt+h h
+" Alt+l l
+inoremap j <Down>
+inoremap k <Up>
+inoremap h <Left>
+inoremap l <Right>
+
+" 映射窗口选择<Ctrl+w> 为<Alt+f>
+nnoremap f <c-w>
+
+" 映射窗口分割<"Alt+f -">
+nnoremap f_ :vs<CR>
+" 映射窗口分割<"Alt+f =">
+nnoremap f- :sp<CR>
+
 
 " NERDTree设置
 map <F2> :NERDTreeToggle<CR>
@@ -547,10 +565,10 @@ let g:AutoPairsCenterLine = 1
 let g:AutoPairsMapSpace = 1
 
 "启用飞行模式，默认为0。
-let g:AutoPairsFlyMode = 0
+let g:AutoPairsFlyMode = 1
 
 "启用跳出多行括号对，默认为1，为0则只能跳出同一行的括号。
-let g:AutoPairsMultilineClose = 0
+let g:AutoPairsMultilineClose = 1
 
 " When the filetype is FILETYPE then make AutoPairs only match for parenthesis
 " 自定义文件类型
