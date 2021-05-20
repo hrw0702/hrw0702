@@ -650,6 +650,9 @@ hi LineNr ctermfg=240 ctermbg=none gui=none guifg=#657b83 guibg=#002B36
 " 设置光标颜色
 hi Cursor ctermfg=15 ctermbg=2 guifg=white guibg=cyan
 
+" 设置 ~ 波浪符为背景色
+hi EndOfBuffer ctermfg=bg
+
 set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 ""hi Cursor ctermfg=15 ctermbg=2 guifg=#002b36 guibg=#839496
 " 修改显示行号那一列颜色
