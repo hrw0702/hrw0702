@@ -141,6 +141,16 @@ let mapleader = ","
 " 如果你安装了indentLine，_vimrc中增加下面一句问题就解决了
 let g:indentLine_concealcursor = ''
 
+" 显示光标下单词的语法高亮颜色配置 
+" -----------------------------------------------
+nmap <Leader>z :call <SID>SynStack()<CR> 
+function! <SID>SynStack() 
+    if !exists("*synstack") 
+    return 
+    endif 
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")') 
+endfunc 
+
 " Markdown配置
 " ------------------------------------------------
 " 不折叠显示，默认是折叠显示，看个人习惯
@@ -348,6 +358,7 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 " 设置airline主题
 let g:airline_theme = 'solarized'
+let g:airline_solarized_bg='dark'
 
 " 总是显示状态栏
 set laststatus=2
@@ -541,7 +552,8 @@ let b:AutoPairs = g:AutoPairs
 let g:AutoPairsShortcutToggle = 'p'
 
 "设置自动为文本添加圆括号的快捷键，默认为ALT+e。
-let g:AutoPairsShortcutFastWrap = 'e'
+""let g:AutoPairsShortcutFastWrap = 'e'
+let g:AutoPairsShortcutFastWrap = ',' 
 
 "设置调到下一层括号对的快捷键，默认为ALT+n。
 let g:AutoPairsShortcutJump = 'n'
