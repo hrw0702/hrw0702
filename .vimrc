@@ -31,6 +31,9 @@ call plug#end()
 syntax enable
 syntax on
 
+" 设置 c语言当前目录和头文件路径（可以使用gf跳转）
+set path+=.,/usr/include/**
+
 " 关闭 [Scratch] - PRV
 set completeopt=menu
 
