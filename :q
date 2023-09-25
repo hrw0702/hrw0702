@@ -1,0 +1,138 @@
+local c = require("onedark.colors")
+
+require("onedark").setup({
+	-- Main options --
+	style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+	transparent = false, -- Show/hide background
+	term_colors = true, -- Change terminal color as per the selected theme style
+	ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+	cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+
+	-- toggle theme style ---
+	toggle_style_key = "<leader>ts", -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+	toggle_style_list = { "darker", "light" }, -- List of styles to toggle between
+
+	-- Change code style ---
+	-- Options are italic, bold, underline, none
+	-- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+	code_style = {
+		comments = "italic",
+		keywords = "none",
+		functions = "none",
+		strings = "none",
+		variables = "none",
+	},
+
+	-- Lualine options --
+	lualine = {
+		transparent = false, -- lualine center bar transparency
+	},
+
+	-- Custom Highlights --
+	colors = {
+		-- bright_orange = "#ff8800", -- define a new color
+		-- green = "#00ffaa", -- redefine an existing color
+	},
+
+	highlights = {
+		-- common:
+		-- vim 错误信息
+		ErrorMsg = { fg = c.red, fmt = "none" },
+		WarningMsg = { fg = c.yellow, fmt = "none" },
+		-- nvim-cmp 滚动条颜色
+		PmenuThumb = { fg = c.none, bg = c.purple },
+
+		-- syntax:
+		-- "int float double"
+		Type = { fg = c.fg, fmt = "bold" },
+
+		-- "struct"
+		Structure = { fg = c.cyan, fmt = "bold" },
+
+		Identifier = { fg = c.yellow, fmt = "none" },
+		Keyword = { fg = c.dark_yellow, fmt = "none" },
+		-- 'if else then'
+		Conditional = { fg = c.dark_yellow, fmt = "bold" },
+
+		-- 'while for'
+		Repeat = { fg = c.dark_purple, fmt = "bold" },
+
+		Macro = { fg = c.orange },
+		Special = { fg = c.yellow },
+
+		-- "%d %p \n"
+		SpecialChar = { fg = c.dark_red },
+
+		-- treesitter:
+		["@comment"] = { fg = c.grey, fmt = "italic" },
+
+		-- "if then else "
+		["@conditional"] = { fg = c.dark_yellow, fmt = "bold" },
+
+		["@constant"] = { fg = c.orange },
+
+		-- 枚举变量成员
+		["@constant.builtin"] = { fg = c.dark_red },
+
+		["@keyword"] = { fg = c.cyan, fmt = "none" },
+
+		["@keyword.function"] = { fg = c.fg, fmt = "none" },
+
+		-- 函数参数变量名称
+		["@parameter"] = { fg = c.fg, fmt = "italic" },
+
+		-- struct 成员
+		["@property"] = { fg = c.light_grey },
+
+		-- "while for"
+		["@repeat"] = { fg = c.dark_yellow, fmt = "bold" },
+
+		-- 枚举变量名称
+		["@type"] = { fg = c.cyan, fmt = "bold" },
+
+		-- 变量类型
+		["@type.builtin"] = { fg = c.dark_purple, fmt = "none" },
+
+		-- treesitter: TS
+		TSParameter = { fg = c.fg, fmt = "italic" },
+		TSConditional = { fg = c.fg, fmt = "none" },
+		TSInclude = { fg = c.yellow },
+		TSKeyword = { fg = c.dark_yellow, fmt = "bold" },
+		TSKeywordOperator = { fg = c.fg, fmt = "none" },
+		TSPunctSpecial = { fg = c.light_grey },
+		TSRepeat = { fg = c.dark_yellow, fmt = "bold" },
+		TSStringEscape = { fg = c.light_grey, fmt = "none" },
+		TSTypeBuiltin = { fg = c.dark_yellow, fmt = "bold" },
+		TSVariableBuiltin = { fg = c.light_grey, fmt = "none" },
+
+		-- telescope:
+		TelescopeBorder = { fg = c.fg, bg = c.dark_cyan, fmt = "none" },
+		TelescopeSelection = { bg = c.green },
+		--
+		-- ["@keyword"] = { fg = "$green" },
+		-- ["@string"] = { fg = c.red, fmt = "bold" },
+		-- ["@function"] = { fg = "#0000ff", sp = "$cyan", fmt = "underline,italic" },
+		-- ["@function.builtin"] = { fg = "#0059ff" },
+	},
+
+	-- Plugins Config --
+	diagnostics = {
+		darker = true, -- darker colors for diagnostic
+		undercurl = true, -- use undercurl instead of underline for diagnostics
+		background = true, -- use background color for virtual text
+	},
+})
+
+-- vim.print(vim.g.onedark_config.highlights)
+for group_name, group_settings in pairs(vim.g.onedark_config.highlights) do
+	vim.api.nvim_command(
+		string.format(
+			"highlight %s guifg=%s guibg=%s guisp=%s gui=%s",
+			group_name,
+			group_settings.fg or "none",
+			group_settings.bg or "none",
+			group_settings.sp or "none",
+			group_settings.fmt or "none"
+		)
+	)
+end
