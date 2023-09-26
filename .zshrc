@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,8 @@ export ZSH="/home/wen/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bira"
+# ZSH_THEME="bira"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,7 +127,7 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -138,6 +146,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+
+
+alias vim='/usr/bin/nvim'
+alias pc='proxychains4'
+
+# 代理脚本
+alias proxy=" source ~/proxy.sh"
+
 # eval $(dircolors -b ~/.dircolors/dircolors.256dark)
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
@@ -145,10 +161,23 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
         export TERM='xterm-color'
 fi
-
 # tmux -2 以256终端运行
 alias tmux='tmux -2'
 
 export PATH=$PATH:$HOME/.yarn/bin
 export PATH=$PATH:$HOME/.config/yarn/global/node_modules/.bin
+export BOB_CONFIG=$HOME/.config/bob/config.json
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# 设置代理
+# 获取主机 IP
+# 主机 IP 保存在 /etc/resolv.conf 中
+#export hostip=$(cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*')
+#alias setss='export https_proxy="http://${hostip}:7890";export http_proxy="http://${hostip}:7890";export all_proxy="socks5://${hostip}:7891";'
+#alias setss='export all_proxy="socks5://${hostip}:7891";'
+#alias unsetss='unset all_proxy'
+
+source /home/wen/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+complete -c proxychains4
